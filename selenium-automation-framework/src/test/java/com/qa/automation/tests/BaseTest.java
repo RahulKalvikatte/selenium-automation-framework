@@ -22,7 +22,7 @@ public class BaseTest {
     protected void openApplication() {
 
         DriverFactory.getDriver().get(
-                ConfigReader.getProperty("baseUrl")
+        		ConfigReader.getBaseUrl()
         );
     }
 
@@ -34,8 +34,8 @@ public class BaseTest {
                 new LoginPage(DriverFactory.getDriver());
 
         loginPage.login(
-                ConfigReader.getProperty("username"),
-                ConfigReader.getProperty("password")
+        		ConfigReader.getUsername(),
+        		ConfigReader.getPassword()
         );
     }
 }

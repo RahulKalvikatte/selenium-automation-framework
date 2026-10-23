@@ -12,7 +12,7 @@ public class DriverFactory {
 
     public static void initializeDriver() {
 
-        String browser = ConfigReader.getProperty("browser");
+    	String browser = ConfigReader.getBrowser();
 
         if (browser.equalsIgnoreCase("chrome")) {
 

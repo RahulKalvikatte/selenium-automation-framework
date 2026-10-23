@@ -28,4 +28,32 @@ public class ConfigReader {
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
+    
+    public static String getBaseUrl() {
+        return getProperty("baseUrl");
+    }
+
+    public static String getBrowser() {
+        return getProperty("browser");
+    }
+
+    public static String getUsername() {
+        return getProperty("username");
+    }
+
+    public static String getPassword() {
+        return getProperty("password");
+    }
+
+    public static String getFirstName() {
+        return getProperty("firstName");
+    }
+
+    public static String getLastName() {
+        return getProperty("lastName");
+    }
+
+    public static String getPostalCode() {
+        return getProperty("postalCode");
+    }
 }
