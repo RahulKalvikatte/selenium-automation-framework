@@ -1,6 +1,5 @@
 package com.qa.automation.tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -9,33 +8,34 @@ import com.qa.automation.utils.ConfigReader;
 import com.qa.automation.utils.DriverFactory;
 
 public class BaseTest {
-	
-	
-	@BeforeMethod
-	public void setUp() {
-		DriverFactory.initializeDriver();
-	}
-	
-	@AfterMethod
+
+    @BeforeMethod
+    public void setUp() {
+        DriverFactory.initializeDriver();
+    }
+
+    @AfterMethod
     public void tearDown() {
         DriverFactory.quitDriver();
     }
-	
-	 protected void loginToApplication() {
 
-	        WebDriver driver = DriverFactory.getDriver();
+    protected void openApplication() {
 
-	        driver.get(
-	                ConfigReader.getProperty("baseUrl")
-	        );
+        DriverFactory.getDriver().get(
+                ConfigReader.getProperty("baseUrl")
+        );
+    }
 
-	        LoginPage loginPage =
-	                new LoginPage(driver);
+    protected void loginToApplication() {
 
-	        loginPage.login(
-	                ConfigReader.getProperty("username"),
-	                ConfigReader.getProperty("password")
-	        );
-	    }
+        openApplication();
 
+        LoginPage loginPage =
+                new LoginPage(DriverFactory.getDriver());
+
+        loginPage.login(
+                ConfigReader.getProperty("username"),
+                ConfigReader.getProperty("password")
+        );
+    }
 }
