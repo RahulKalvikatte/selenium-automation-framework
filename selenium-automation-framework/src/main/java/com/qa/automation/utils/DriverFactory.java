@@ -1,8 +1,8 @@
 package com.qa.automation.utils;
 
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -14,11 +14,24 @@ public class DriverFactory {
 
     	String browser = ConfigReader.getBrowser();
 
-        if (browser.equalsIgnoreCase("chrome")) {
+    	if (browser.equalsIgnoreCase("chrome")) {
 
-            driver = new ChromeDriver();
+    	    ChromeOptions options = new ChromeOptions();
 
-        } else if (browser.equalsIgnoreCase("firefox")) {
+    	    options.addArguments("--disable-notifications");
+
+    	    options.setExperimentalOption(
+    	            "prefs",
+    	            java.util.Map.of(
+    	                    "credentials_enable_service", false,
+    	                    "profile.password_manager_enabled", false,
+    	                    "profile.password_manager_leak_detection", false
+    	            )
+    	    );
+
+    	    driver = new ChromeDriver(options);
+
+    	} else if (browser.equalsIgnoreCase("firefox")) {
 
             driver = new FirefoxDriver();
 

@@ -58,7 +58,7 @@ public class ProductTest extends BaseTest {
         ProductsPage productsPage =
                 new ProductsPage(driver);
 
-        productsPage.clickFirstProduct();
+        productsPage.clickProduct("Sauce Labs Backpack");
 
         ProductDetailsPage productDetailsPage =
                 new ProductDetailsPage(driver);

@@ -69,4 +69,16 @@ public class ProductsPage extends BasePage {
 
         return driver.findElements(productPrices);
     }
+    
+    public void clickProduct(String productName) {
+
+        By productLocator =
+                By.xpath(
+                    "//div[@data-test='inventory-item-name' and normalize-space(.)='"
+                    + productName
+                    + "']/parent::a"
+                );
+
+        click(productLocator);
+    }
 }
